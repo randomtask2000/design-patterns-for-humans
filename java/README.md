@@ -72,50 +72,46 @@ Wikipedia says
 **Programmatic Example**
 
 First of all we have a door interface and the implementation
-```php
-interface Door
-{
-    public function getWidth(): float;
-    public function getHeight(): float;
+```java
+public interface Door {
+    float getWidth();
+    float getHeight();
 }
 
-class WoodenDoor implements Door
-{
-    protected $width;
-    protected $height;
+public class WoodenDoor implements Door {
+    protected float width;
+    protected float height;
 
-    public function __construct(float $width, float $height)
-    {
-        $this->width = $width;
-        $this->height = $height;
+    public WoodenDoor(float width, float height) {
+        this.width = width;
+        this.height = height;
     }
 
-    public function getWidth(): float
+    public float getWidth()
     {
-        return $this->width;
+        return this.width;
     }
 
-    public function getHeight(): float
+    public float getHeight()
     {
-        return $this->height;
+        return this.height;
     }
 }
 ```
 Then we have our door factory that makes the door and returns it
-```php
-class DoorFactory
-{
-    public static function makeDoor($width, $height): Door
+```java
+public class DoorFactory {
+    public static Door makeDoor(float width, float height)
     {
-        return new WoodenDoor($width, $height);
+        return new WoodenDoor(width, height);
     }
 }
 ```
 And then it can be used as
-```php
-$door = DoorFactory::makeDoor(100, 200);
-echo 'Width: ' . $door->getWidth();
-echo 'Height: ' . $door->getHeight();
+```java
+Door door = DoorFactory.makeDoor(100F, 200F);
+assertThat(door.getWidth(), is(100F));
+assertThat(door.getHeight(), is(200F));
 ```
 
 **When to Use?**

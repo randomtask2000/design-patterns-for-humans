@@ -1,4 +1,4 @@
-package com.emilionicoli.designpatterns;
+package com.randomtask2000.designpatterns;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,10 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DesignpatternsApplicationTests {
-
+public class DemoApplicationTests {
 	@Test
-	public void contextLoads() {
-	}
-
+	public void contextLoads() { }
 }

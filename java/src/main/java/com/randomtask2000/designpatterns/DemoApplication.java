@@ -1,12 +1,12 @@
-package com.emilionicoli.designpatterns;
+package com.randomtask2000.designpatterns;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DesignpatternsApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DesignpatternsApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 }

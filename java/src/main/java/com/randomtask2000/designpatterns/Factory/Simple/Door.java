@@ -1,4 +1,4 @@
-package com.randomtask2000.designpatterns.SimpleFactory;
+package com.randomtask2000.designpatterns.Factory.Simple;
 
 public interface Door {
     float getWidth();

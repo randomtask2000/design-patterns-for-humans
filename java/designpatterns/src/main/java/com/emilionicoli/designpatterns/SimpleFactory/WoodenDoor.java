@@ -9,12 +9,12 @@ public class WoodenDoor implements Door
         this.height = height;
     }
 
-    public void getWidth(): float
+    public float getWidth()
     {
         return this.width;
     }
 
-    public void getHeight(): float
+    public float getHeight()
     {
         return this.height;
     }

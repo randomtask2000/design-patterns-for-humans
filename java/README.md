@@ -99,8 +99,7 @@ public class WoodenDoor implements Door {
 Then we have our door factory that makes the door and returns it
 ```java
 public class DoorFactory {
-    public static Door makeDoor(float width, float height)
-    {
+    public static Door makeDoor(float width, float height) {
         return new WoodenDoor(width, height);
     }
 }
@@ -152,7 +151,7 @@ public class CommunityExecutive implements Interviewer {
 Now let us create our `HiringManager`
 ```java
 public abstract class HiringManager {
-    // Factory method
+    FactoryMethod
     protected abstract Interviewer makeInterviewer();
 
     public void takeInterview() {

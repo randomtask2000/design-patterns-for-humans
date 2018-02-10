@@ -1,7 +1,7 @@
-package com.randomtask2000.designpatterns.Factory;
+package com.randomtask2000.designpatterns.FactoryMethod;
 
 public abstract class HiringManager {
-    // Factory method
+    // FactoryMethod method
     protected abstract Interviewer makeInterviewer();
 
     public void takeInterview() {

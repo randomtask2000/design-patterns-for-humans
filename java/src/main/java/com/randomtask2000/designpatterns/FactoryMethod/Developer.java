@@ -1,4 +1,4 @@
-package com.randomtask2000.designpatterns.Factory;
+package com.randomtask2000.designpatterns.FactoryMethod;
 
 public class Developer implements Interviewer {
     public void askQuestions() {

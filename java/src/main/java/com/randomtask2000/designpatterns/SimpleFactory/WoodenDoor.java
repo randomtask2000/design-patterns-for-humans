@@ -1,4 +1,4 @@
-package com.randomtask2000.designpatterns.Factory.Simple;
+package com.randomtask2000.designpatterns.SimpleFactory;
 
 public class WoodenDoor implements Door {
     protected float width;

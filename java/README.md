@@ -87,13 +87,11 @@ public class WoodenDoor implements Door {
         this.height = height;
     }
 
-    public float getWidth()
-    {
+    public float getWidth() {
         return this.width;
     }
 
-    public float getHeight()
-    {
+    public float getHeight() {
         return this.height;
     }
 }
@@ -136,18 +134,18 @@ Taking our hiring manager example above. First of all we have an interviewer int
 
 ```java
 public interface Interviewer {
-    function askQuestions();
+    void askQuestions();
 }
 
 public class Developer implements Interviewer {
     public void askQuestions() {
-        System.out.Println("Asking about design patterns!");
+        System.out.println("Asking about design patterns!");
     }
 }
 
 public class CommunityExecutive implements Interviewer {
     public void askQuestions() {
-        System.out.Println("Asking about community building");
+        System.out.println("Asking about community building");
     }
 }
 ```
@@ -155,14 +153,13 @@ Now let us create our `HiringManager`
 ```java
 public abstract class HiringManager {
     // Factory method
-    protected Interviewer makeInterviewer();
+    protected abstract Interviewer makeInterviewer();
 
-    public function takeInterview() {
+    public void takeInterview() {
         Interviewer interviewer = this.makeInterviewer();
         interviewer.askQuestions();
     }
 }
-
 ```
 Now any child can extend it and provide the required interviewer
 ```java
@@ -172,20 +169,23 @@ public class DevelopmentManager extends HiringManager {
     }
 }
 
-class MarketingManager extends HiringManager {
-    protected Interviewer makeInterviewer() {
-        return new CommunityExecutive();
-    }
+public class MarketingManager extends HiringManager {
+    protected Interviewer makeInterviewer() { return new CommunityExecutive(); }
 }
 ```
 and then it can be used as
 
 ```java
-Interviewer devManager = new DevelopmentManager();
+DevelopmentManager devManager = new DevelopmentManager();
 devManager.takeInterview(); // Output: Asking about design patterns
 
-$marketingManager = new MarketingManager();
-$marketingManager->takeInterview(); // Output: Asking about community building.
+MarketingManager marketingManager = new MarketingManager();
+marketingManager.takeInterview(); // Output: Asking about community building.
+```
+Output
+```bash
+Asking about design patterns!
+Asking about community building
 ```
 
 **When to use?**

@@ -1,6 +1,5 @@
 package com.randomtask2000.designpatterns;
 
-import com.randomtask2000.designpatterns.Factory.Developer;
 import com.randomtask2000.designpatterns.Factory.DevelopmentManager;
 import com.randomtask2000.designpatterns.Factory.MarketingManager;
 import com.randomtask2000.designpatterns.Factory.Simple.Door;
@@ -19,7 +18,7 @@ public class FactoryTest {
     }
     @Test
     public void createInterviewer_happyPath(){
-        Developer devManager = new DevelopmentManager();
+        DevelopmentManager devManager = new DevelopmentManager();
         devManager.takeInterview(); // Output: Asking about design patterns
 
         MarketingManager marketingManager = new MarketingManager();

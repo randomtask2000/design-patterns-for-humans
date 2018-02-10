@@ -151,7 +151,7 @@ public class CommunityExecutive implements Interviewer {
 Now let us create our `HiringManager`
 ```java
 public abstract class HiringManager {
-    FactoryMethod
+    // FactoryMethod
     protected abstract Interviewer makeInterviewer();
 
     public void takeInterview() {

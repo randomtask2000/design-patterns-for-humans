@@ -318,9 +318,8 @@ Wikipedia says
 
 Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
 
-```php
-public function __construct($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce = true)
-{
+```java
+public Burger(int size, boolean cheese, boolean pepperoni, boolean tomato, boolean lettuce) {
 }
 ```
 
@@ -330,9 +329,8 @@ As you can see; the number of constructor parameters can quickly get out of hand
 
 The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
 
-```php
-class Burger
-{
+```java
+public class Burger {
     protected $size;
 
     protected $cheese = false;
@@ -340,8 +338,7 @@ class Burger
     protected $lettuce = false;
     protected $tomato = false;
 
-    public function __construct(BurgerBuilder $builder)
-    {
+    public function __construct(BurgerBuilder $builder) {
         $this->size = $builder->size;
         $this->cheese = $builder->cheese;
         $this->pepperoni = $builder->pepperoni;
@@ -353,59 +350,52 @@ class Burger
 
 And then we have the builder
 
-```php
-class BurgerBuilder
-{
-    public $size;
+```java
+public class BurgerBuilder {
+    public int size;
 
-    public $cheese = false;
-    public $pepperoni = false;
-    public $lettuce = false;
-    public $tomato = false;
+    public boolean cheese = false;
+    public boolean pepperoni = false;
+    public boolean lettuce = false;
+    public boolean tomato = false;
 
-    public function __construct(int $size)
-    {
-        $this->size = $size;
+    public BurgerBuilder(int size) {
+        this.size = size;
     }
 
-    public function addPepperoni()
-    {
-        $this->pepperoni = true;
-        return $this;
+    public BurgerBuilder addPepperoni() {
+        this.pepperoni = true;
+        return this;
     }
 
-    public function addLettuce()
-    {
-        $this->lettuce = true;
-        return $this;
+    public BurgerBuilder addLettuce() {
+        this.lettuce = true;
+        return this;
     }
 
-    public function addCheese()
-    {
-        $this->cheese = true;
-        return $this;
+    public BurgerBuilder addCheese() {
+        this.cheese = true;
+        return this;
     }
 
-    public function addTomato()
-    {
-        $this->tomato = true;
-        return $this;
+    public BurgerBuilder addTomato() {
+        this.tomato = true;
+        return this;
     }
 
-    public function build(): Burger
-    {
+    public Burger build() {
         return new Burger($this);
     }
 }
 ```
 And then it can be used as:
 
-```php
-$burger = (new BurgerBuilder(14))
-                    ->addPepperoni()
-                    ->addLettuce()
-                    ->addTomato()
-                    ->build();
+```java
+Burger burger = new BurgerBuilder(14)
+                    .addPepperoni()
+                    .addLettuce()
+                    .addTomato()
+                    .build();
 ```
 
 **When to use?**
@@ -427,7 +417,7 @@ In short, it allows you to create a copy of an existing object and modify it to 
 
 **Programmatic Example**
 
-In PHP, it can be easily done using `clone`
+In Java, it can be easily done using `clone`
 
 ```php
 class Sheep

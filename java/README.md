@@ -420,14 +420,18 @@ In short, it allows you to create a copy of an existing object and modify it to 
 In Java, it can be easily done using `clone`
 
 ```java
-public class Sheep {
-public class Sheep {
+public class Sheep implements Cloneable {
     protected String name;
     protected String category = "Mountain Sheep";
 
     public Sheep(String name, String category) {
         this.name = name;
         this.category = category;
+    }
+
+    public Sheep(Sheep source) {
+        this.name = source.getName();
+        this.category = source.getCategory();
     }
 
     public void setName(String name) {
@@ -445,22 +449,31 @@ public class Sheep {
     public String getCategory() {
         return this.category;
     }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return new Sheep(getName(), getCategory());
+    }
 }
 ```
 Then it can be cloned like below
-```php
-$original = new Sheep('Jolly');
-echo $original->getName(); // Jolly
-echo $original->getCategory(); // Mountain Sheep
-
+```java
+Sheep original = new Sheep("Jolly", "Mountain Sheep");
+System.out.println(original.getName()); // Jolly
+System.out.println(original.getCategory()); // Mountain Sheep
 // Clone and modify what is required
-$cloned = clone $original;
-$cloned->setName('Dolly');
-echo $cloned->getName(); // Dolly
-echo $cloned->getCategory(); // Mountain sheep
+Sheep cloned = new Sheep(original); // we go about it by copying the object through a constructor
+cloned.setName("Dolly");
+System.out.println(cloned.getName()); // Dolly
+System.out.println(cloned.getCategory()); // Mountain sheep
+```
+Output:
+```bash
+Dolly
+Mountain Sheep
 ```
 
-Also you could use the magic method `__clone` to modify the cloning behavior.
+Also you could extend the `Clonable` interface in Java and override the `clone` method, but the community will largely prefer copying an object over cloning 
 
 **When to use?**
 

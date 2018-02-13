@@ -420,7 +420,7 @@ In short, it allows you to create a copy of an existing object and modify it to 
 In Java, it can be easily done using `clone`
 
 ```java
-public class Sheep implements Cloneable {
+public class Sheep {
     protected String name;
     protected String category = "Mountain Sheep";
 
@@ -448,11 +448,6 @@ public class Sheep implements Cloneable {
 
     public String getCategory() {
         return this.category;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return new Sheep(getName(), getCategory());
     }
 }
 ```

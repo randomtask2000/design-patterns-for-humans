@@ -1,6 +1,6 @@
 package com.randomtask2000.designpatterns.Prototype;
 
-public class Sheep implements Cloneable {
+public class Sheep {
     protected String name;
     protected String category = "Mountain Sheep";
 
@@ -28,10 +28,5 @@ public class Sheep implements Cloneable {
 
     public String getCategory() {
         return this.category;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return new Sheep(getName(), getCategory());
     }
 }

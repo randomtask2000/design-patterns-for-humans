@@ -331,19 +331,19 @@ The sane alternative is to use the builder pattern. First of all we have our bur
 
 ```java
 public class Burger {
-    protected $size;
+    protected int size;
 
-    protected $cheese = false;
-    protected $pepperoni = false;
-    protected $lettuce = false;
-    protected $tomato = false;
+    protected boolean cheese = false;
+    protected boolean pepperoni = false;
+    protected boolean lettuce = false;
+    protected boolean tomato = false;
 
-    public function __construct(BurgerBuilder $builder) {
-        $this->size = $builder->size;
-        $this->cheese = $builder->cheese;
-        $this->pepperoni = $builder->pepperoni;
-        $this->lettuce = $builder->lettuce;
-        $this->tomato = $builder->tomato;
+    public Burger(BurgerBuilder builder) {
+        this.size = builder.size;
+        this.cheese = builder.cheese;
+        this.pepperoni = builder.pepperoni;
+        this.lettuce = builder.lettuce;
+        this.tomato = builder.tomato;
     }
 }
 ```
@@ -417,10 +417,10 @@ In short, it allows you to create a copy of an existing object and modify it to 
 
 **Programmatic Example**
 
-In Java, it can be easily done using `clone`
+In Java, it can be easily done by creating a constructor that copies the object. Another way is by using `clone` in the `Clonable` interface, but this method is considered broken in Java.
 
 ```java
-public class Sheep implements Cloneable {
+public class Sheep {
     protected String name;
     protected String category = "Mountain Sheep";
 
@@ -448,11 +448,6 @@ public class Sheep implements Cloneable {
 
     public String getCategory() {
         return this.category;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return new Sheep(getName(), getCategory());
     }
 }
 ```

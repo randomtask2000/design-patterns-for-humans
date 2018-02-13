@@ -417,7 +417,7 @@ In short, it allows you to create a copy of an existing object and modify it to 
 
 **Programmatic Example**
 
-In Java, it can be easily done using `clone`
+In Java, it can be easily done by creating a constructor that copies the object. Another way is by using `clone` in the `Clonable` interface, but this method is considered broken in Java.
 
 ```java
 public class Sheep {
